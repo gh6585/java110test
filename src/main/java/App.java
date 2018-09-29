@@ -61,7 +61,9 @@ public class App {
        static void ptrintmember() {
            for(int i=0;i<index;i++) {
                System.out.printf("%s,%s,%s\n"
-                       ,members[i].getName(),members[i].getEmail(),members[i].getPassword());
+                       ,members[i].getName(),
+                       members[i].getEmail(),
+                       members[i].getPassword());
                }
        }
 }
