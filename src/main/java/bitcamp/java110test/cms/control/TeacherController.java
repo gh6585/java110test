@@ -1,14 +1,19 @@
 package bitcamp.java110test.cms.control;
 import java.util.Scanner;
 
-import bitcamp.java110test.cms.dao.TeacherList;
 import bitcamp.java110test.cms.domain.Teacher;
+import bitcamp.java110test.cms.util.ArrayList;
 
 public class TeacherController {
+    
+    private ArrayList teachers = new ArrayList();
+    public Scanner keyIn;
+    
+    public TeacherController(Scanner keyIn) {
+        this.keyIn=keyIn;
+    }
 
-    public static Scanner keyIn;
-
-    public static void serviceTeacherMenu() {
+    public void serviceTeacherMenu() {
         while(true) {
             System.out.println("강사 관리> ");
             String command = keyIn.nextLine();
@@ -28,7 +33,7 @@ public class TeacherController {
             }
         } 
     }
-    static void inputTeachers() {
+   private void inputTeachers() {
         while(true) {
             Teacher t=new Teacher();
             System.out.println("아이디");
@@ -44,7 +49,7 @@ public class TeacherController {
             System.out.println("전화");
             t.setTel(keyIn.nextLine());
 
-            TeacherList.add(t);
+            teachers.add(t);
 
             System.out.println("계속 입력하시겠습니까??");
             String yn=keyIn.nextLine();
@@ -55,9 +60,9 @@ public class TeacherController {
 
     }
 
-    static void ptrintTeachers() {
-        for(int i=0; i<TeacherList.size(); i++) {
-            Teacher t = TeacherList.get(i);
+    private void ptrintTeachers() {
+        for(int i=0; i<teachers.size(); i++) {
+            Teacher t = (Teacher)teachers.get(i);
 
             System.out.printf("%s, %s, %s, %s, %d, %s\n",
                     t.getName(),
@@ -69,29 +74,29 @@ public class TeacherController {
         }
     }
 
-    private static void deleteTeacher() {
+    private void deleteTeacher() {
         System.out.println("삭제할 번호?");
         int no = Integer.parseInt(keyIn.nextLine());
 
-        if(no<0 || no>= TeacherList.size()) {
+        if(no<0 || no>= teachers.size()) {
             System.out.println("무효한 번호입니다.");
             return;
         }
 
-        TeacherList.remove(no);
+        teachers.remove(no);
 
         System.out.println("삭제하였습니다.");
     }
 
-    private static void detailTeacher() {
+    private void detailTeacher() {
         System.out.println("조회할 번호?");
         int no= Integer.parseInt(keyIn.nextLine());
 
-        if(no<0 || no>= TeacherList.size()) {
+        if(no<0 || no>= teachers.size()) {
             System.out.println("무효한 번호입니다.");
             return;
         }
-        Teacher teacher = TeacherList.get(no);
+        Teacher teacher = (Teacher)teachers.get(no);
 
         System.out.printf("이름: %s\n",teacher.getName());
         System.out.printf("이메일: %s\n",teacher.getEmail());
