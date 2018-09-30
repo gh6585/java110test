@@ -1,6 +1,6 @@
 package bitcamp.java110test.cms.util;
 
-public class ArrayList<T> {
+public class ArrayList<T> implements List<T> {
     
     Object[] list =new Object[5];
     int index =0;
@@ -20,15 +20,20 @@ public class ArrayList<T> {
         list = newList;
     }
     
-    public void remove(int no) {
-        if(no<0||no>list.length) {
-            System.out.println("무효한 번호입니다.");
-            return;
+    public T remove(int no) {
+        if (no < 0 || no >= index) {
+            return null;
         }
-        for(int i=no ; i<list.length-1;i++) {
-            list[i] = list[i+1];
+        
+        @SuppressWarnings("unchecked")
+        T removedObj = (T)list[no];
+        
+        for (int i = no; i < index - 1; i++) {
+            list[i] = list[i + 1];
         }
         index--;
+        
+        return removedObj;
     }
 
     public int size() {
