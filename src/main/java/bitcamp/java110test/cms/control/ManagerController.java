@@ -2,11 +2,11 @@ package bitcamp.java110test.cms.control;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.domain.Manager;
-import bitcamp.java110test.cms.util.ArrayList;
+import bitcamp.java110test.cms.util.LinkedList;
 
 public class ManagerController {
     
-    private ArrayList<Manager> managers = new ArrayList<Manager>();
+    private LinkedList<Manager> managers = new LinkedList<Manager>();
     public Scanner keyIn;
 
     public ManagerController(Scanner keyIn) {
