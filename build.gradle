@@ -3,8 +3,12 @@ plugins {
     id 'application'
     id 'eclipse'
 }
+
+// 프로젝트에서 사용할 라이브러리 설정
+// => 라이브러리 정보는 mvnrepository.com에서 검색하여 가져온다.
 mainClassName = 'App'
 dependencies {
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
     compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
 }
