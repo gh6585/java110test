@@ -6,7 +6,7 @@ import bitcamp.java110test.cms.util.ArrayList;
 
 public class StudentController {
     
-    private ArrayList students = new ArrayList();
+    private ArrayList<Student> students = new ArrayList<Student>();
     public Scanner keyIn;
     
     public StudentController(Scanner keyIn) {
@@ -61,7 +61,7 @@ public class StudentController {
     }
     private void ptrintStudents() {
         for(int i = 0; i < students.size(); i++) {
-            Student s= (Student)students.get(i);
+            Student s= students.get(i);
             System.out.printf("%s, %s, %s, %s, %b, %s\n",
                     s.getName(),
                     s.getEmail(),
@@ -92,7 +92,7 @@ public class StudentController {
             System.out.println("무효한 번호입니다.");
             return;
         }
-        Student student = (Student)students.get(no);
+        Student student = students.get(no);
         
         System.out.printf("이름: %s\n",student.getName());
         System.out.printf("이메일: %s\n",student.getEmail());

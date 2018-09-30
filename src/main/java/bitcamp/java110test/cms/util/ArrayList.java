@@ -1,11 +1,11 @@
 package bitcamp.java110test.cms.util;
 
-public class ArrayList {
+public class ArrayList<T> {
     
     Object[] list =new Object[5];
     int index =0;
     
-    public void add (Object obj) {
+    public void add (T obj) {
         if(index == list.length) {
             increaseStorage();
         }
@@ -35,11 +35,12 @@ public class ArrayList {
         return index;
     }
     
-    public Object get(int no) {
+    @SuppressWarnings("unchecked")
+    public T get(int no) {
         if(no<0||no>list.length) {
             System.out.println("무효한 번호입니다.");
             return null;
         }
-        return list[no];
+        return (T)list[no];
     }
 }
