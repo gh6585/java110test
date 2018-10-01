@@ -2,9 +2,11 @@ package bitcamp.java110test.cms.control;
 
 import java.util.Scanner;
 
+import bitcamp.java110test.cms.annotation.Component;
+
+@Component("4")
 public class HelloController implements Controller{
     
-    public String name = "4";
     
     @Override
     public void service(Scanner keyIn) {
