@@ -3,12 +3,13 @@ package bitcamp.java110test.cms.control;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.annotation.Component;
+import bitcamp.java110test.cms.annotation.RequestMapping;
 
-@Component("4")
-public class HelloController implements Controller{
+@Component("hello")
+public class HelloController {
     
     
-    @Override
+    @RequestMapping
     public void service(Scanner keyIn) {
         System.out.println("안녕하세요!!");
     }
