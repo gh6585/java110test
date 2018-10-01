@@ -14,7 +14,6 @@ public class App {
         
         while(true) {
             String menu = promtMenu();
-
             if(menu.equals("0")) {
                 System.out.println("안녕히 가세요");
                 break;
@@ -37,22 +36,8 @@ public class App {
         System.out.println("2.강사 관리");
         System.out.println("3.매니저 관리");
         System.out.println("0.종료 관리");
-
-        while(true) {
-            System.out.println("메뉴 번호");
-
-            String menu =keyIn.nextLine();
-
-            switch (menu){
-            case "1":
-            case "2":
-            case "3":
-            case "0":
-                return menu;
-            default:
-                System.out.println("메뉴 번호가 유효하지 않습니다.");
-            }
-        }
+        
+        return keyIn.nextLine();
     }
 }
 
