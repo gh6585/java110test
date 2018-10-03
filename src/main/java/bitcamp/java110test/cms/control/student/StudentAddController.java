@@ -28,8 +28,12 @@ public class StudentAddController {
             System.out.println("최종학력?");
             s.setSchool(keyIn.nextLine());
 
-            App.students.add(s);
-
+            if(App.studentDao.insert(s) > 0) {
+                System.out.println("저장하였습니다.");
+            } else {
+                System.out.println("같은 이메일의 학생이 존재합니다.");
+            }
+            
             System.out.println("계속 입력하시겠습니까??");
             String yn=keyIn.nextLine();
             if(yn.toUpperCase().equals("N"))
