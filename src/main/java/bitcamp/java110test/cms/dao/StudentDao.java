@@ -3,8 +3,10 @@ package bitcamp.java110test.cms.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.domain.Student;
 
+@Component
 public class StudentDao {
     private List<Student> list = new ArrayList<>();
     

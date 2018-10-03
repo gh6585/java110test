@@ -4,12 +4,22 @@ import java.util.List;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.App;
+import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
+import bitcamp.java110test.cms.dao.ManagerDao;
 import bitcamp.java110test.cms.domain.Manager;
 
 @Component
 public class ManagerListController {
+    
+    ManagerDao managerDao;
+    
+    @Autowired
+    public void setManagerDao(ManagerDao managerDao) {
+        this.managerDao = managerDao;
+    }
+    
     @RequestMapping("manager/list")
     public void list(Scanner keyIn) {
         List<Manager> list = App.managerDao.findAll();

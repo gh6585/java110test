@@ -3,11 +3,21 @@ package bitcamp.java110test.cms.control.teacher;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.App;
+import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
+import bitcamp.java110test.cms.dao.TeacherDao;
 
 @Component
 public class TeacherDeleteController {
+    
+ TeacherDao teahcherDao;
+    
+    @Autowired
+    public void setTeacherDao(TeacherDao teacherDao) {
+        this.teahcherDao =teacherDao;
+    }
+    
     @RequestMapping("teacher/delete")
     public void delete(Scanner keyIn) {
         System.out.println("삭제할 강사의 이메일은?");

@@ -3,12 +3,22 @@ package bitcamp.java110test.cms.control.teacher;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.App;
+import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
+import bitcamp.java110test.cms.dao.TeacherDao;
 import bitcamp.java110test.cms.domain.Teacher;
 
 @Component
 public class TeacherDetailController {
+    
+ TeacherDao teahcherDao;
+    
+    @Autowired
+    public void setTeacherDao(TeacherDao teacherDao) {
+        this.teahcherDao =teacherDao;
+    }
+    
     @RequestMapping("teacher/detail")
     public void detailTeacher(Scanner keyIn) {
         System.out.println("조회할 강사의 이메일으??");

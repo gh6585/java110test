@@ -6,10 +6,17 @@ import java.util.Scanner;
 import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
+import bitcamp.java110test.cms.dao.StudentDao;
 import bitcamp.java110test.cms.domain.Student;
 
 @Component
 public class StudentListController {
+    
+ StudentDao studentDao;
+    
+    public void setStudentDao(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
     
     @RequestMapping("student/list")
     public void list(Scanner keyIn) {

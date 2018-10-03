@@ -5,9 +5,16 @@ import java.util.Scanner;
 import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
+import bitcamp.java110test.cms.dao.StudentDao;
 
 @Component
 public class StudentDeleteController {
+    
+ StudentDao studentDao;
+    
+    public void setStudentDao(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
     
     @RequestMapping("student/delete")
     public void delete(Scanner keyIn) {

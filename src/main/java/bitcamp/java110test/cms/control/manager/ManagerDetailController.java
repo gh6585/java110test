@@ -3,12 +3,22 @@ package bitcamp.java110test.cms.control.manager;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.App;
+import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
+import bitcamp.java110test.cms.dao.ManagerDao;
 import bitcamp.java110test.cms.domain.Manager;
 
 @Component
 public class ManagerDetailController {
+    
+    ManagerDao managerDao;
+    
+    @Autowired
+    public void setManagerDao(ManagerDao managerDao) {
+        this.managerDao = managerDao;
+    }
+    
     @RequestMapping("manager/detail")
     public void detail(Scanner keyIn) {
         System.out.println("조회할 매니저의 이메일?");

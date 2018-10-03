@@ -3,12 +3,22 @@ package bitcamp.java110test.cms.control.manager;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.App;
+import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
+import bitcamp.java110test.cms.dao.ManagerDao;
 import bitcamp.java110test.cms.domain.Manager;
 
 @Component
 public class ManagerAddController {
+    
+    ManagerDao managerDao;
+    
+    @Autowired
+    public void setManagerDao(ManagerDao managerDao) {
+        this.managerDao = managerDao;
+    }
+    
     @RequestMapping("manager/add")
     public void add(Scanner keyIn) {
         while(true) {
