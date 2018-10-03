@@ -1,11 +1,21 @@
+package bitcamp.java110test.cms;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.context.ApplicationContext;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
+import bitcamp.java110test.cms.domain.Manager;
+import bitcamp.java110test.cms.domain.Student;
+import bitcamp.java110test.cms.domain.Teacher;
 
 public class App {
 
+    public static ArrayList<Student> students = new ArrayList<>();
+    public static ArrayList<Teacher> teachers = new ArrayList<>();
+    public static ArrayList<Manager> managers = new ArrayList<>();
+    
     static Scanner keyIn=new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
