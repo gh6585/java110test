@@ -12,7 +12,7 @@ public class TeacherController {
     
     private List<Teacher> teachers = new ArrayList<>();
 
-    @RequestMapping
+    @RequestMapping("teacher")
     public void teacher(Scanner keyIn) {
         while(true) {
             System.out.println("강사 관리> ");

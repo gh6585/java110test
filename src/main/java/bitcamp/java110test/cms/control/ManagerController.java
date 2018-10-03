@@ -12,7 +12,7 @@ public class ManagerController {
     
     private List<Manager> managers = new ArrayList<>();
     
-    @RequestMapping
+    @RequestMapping("manager")
     public void manager(Scanner keyIn) {
         while(true) {
             System.out.println("매니저 관리> ");
