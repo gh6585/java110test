@@ -1,20 +1,19 @@
 package bitcamp.java110test.cms;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.context.ApplicationContext;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
+import bitcamp.java110test.cms.dao.ManagerDao;
 import bitcamp.java110test.cms.dao.StudentDao;
-import bitcamp.java110test.cms.domain.Manager;
-import bitcamp.java110test.cms.domain.Teacher;
+import bitcamp.java110test.cms.dao.TeacherDao;
 
 public class App {
 
     public static StudentDao studentDao = new StudentDao();
-    public static ArrayList<Teacher> teachers = new ArrayList<>();
-    public static ArrayList<Manager> managers = new ArrayList<>();
+    public static TeacherDao teacherDao = new TeacherDao();
+    public static ManagerDao managerDao = new ManagerDao();
     
     static Scanner keyIn=new Scanner(System.in);
 

@@ -1,5 +1,6 @@
 package bitcamp.java110test.cms.control.manager;
 
+import java.util.List;
 import java.util.Scanner;
 
 import bitcamp.java110test.cms.App;
@@ -11,9 +12,9 @@ import bitcamp.java110test.cms.domain.Manager;
 public class ManagerListController {
     @RequestMapping("manager/list")
     public void list(Scanner keyIn) {
-        for(int i=0;i<App.managers.size(); i++) {
-            Manager m = App.managers.get(i);
-
+        List<Manager> list = App.managerDao.findAll();
+        for(Manager m : list) {
+        
             System.out.printf("%s, %s, %s, %s, %s\n",
                     m.getName(),
                     m.getEmail(),

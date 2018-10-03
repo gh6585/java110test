@@ -26,8 +26,12 @@ public class TeacherAddController {
             System.out.println("전화");
             t.setTel(keyIn.nextLine());
 
-            App.teachers.add(t);
-
+            if(App.teacherDao.insert(t) > 0) {
+                System.out.println("저장하였습니다");
+            } else {
+                System.out.println("같은 이메일의 강사가 존재합니다.");
+            }
+            
             System.out.println("계속 입력하시겠습니까??");
             String yn=keyIn.nextLine();
             if(yn.toUpperCase().equals("N"))

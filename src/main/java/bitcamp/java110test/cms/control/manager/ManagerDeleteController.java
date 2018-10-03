@@ -10,15 +10,15 @@ import bitcamp.java110test.cms.annotation.RequestMapping;
 public class ManagerDeleteController {
     @RequestMapping("manager/delete")
     public void delete(Scanner keyIn) {
-        System.out.println("삭제할 번호?");
-        int no = Integer.parseInt(keyIn.nextLine());
-
-        if(no<0 || no>= App.managers.size()) {
-            System.out.println("무효한 번호입니다.");
-            return;
+        System.out.println("삭제할 매니저의 이메일?");
+        String email = keyIn.nextLine();
+        
+        if(App.managerDao.delete(email)>0) {
+            System.out.println("삭제하였습니다.");
+        }else {
+            System.out.println("해당 이메일의 매니저가 없습니다!");
         }
-
-        App.managers.remove(no);
+        
         System.out.println("삭제하였습니다.");
     }
 }
