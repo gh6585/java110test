@@ -4,7 +4,6 @@ package bitcamp.java110test.cms.context;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -13,7 +12,6 @@ import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
 
-import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 
 public class ApplicationContext {
@@ -35,11 +33,9 @@ public class ApplicationContext {
         // 클래스에 대해 인스턴스를 생성하여 objPool에 보관한다.
         createInstance();
 
-        // injectDependency() 메서드를 외부 클래스로 분리한 다음에
-        // 그 객체를 실행한다.
-        AutowiredAnnoationBeanPostProcessor processor =
-                new AutowiredAnnoationBeanPostProcessor();
-        processor.postProcess(this);
+        // 객체 생성 후에 실행할 작업이 있다면,
+        // BeanPostProcessor 구현체를 찾아 실행한다.
+        callBeanPostProcessor();
     }
     // objPool에 보관된 객체를 이름으로 찾아 리턴한다.
     public Object getBean(String name) {
@@ -117,4 +113,26 @@ public class ApplicationContext {
         }
     }
 
+    private void callBeanPostProcessor() {
+        Collection<Object> objList = objPool.values();
+        
+        // => objPool에 보관된 객체 중에서  BeanPostProcessor 규칙을
+        //    준수하느 객체를 찾는다.
+        for (Object obj : objList) {
+            if (!BeanPostProcessor.class.isInstance(obj)) continue;
+            
+            BeanPostProcessor processor = (BeanPostProcessor)obj;
+            processor.postProcess(this);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+

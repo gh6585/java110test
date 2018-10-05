@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import bitcamp.java110test.cms.annotation.Autowired;
 
-public class AutowiredAnnoationBeanPostProcessor {
+public class AutowiredAnnoationBeanPostProcessor implements BeanPostProcessor {
 
     ApplicationContext beanCOntainer;
     
