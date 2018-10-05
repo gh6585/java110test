@@ -123,7 +123,7 @@ public class ApplicationContext {
             
             BeanPostProcessor processor = (BeanPostProcessor)obj;
             processor.postProcess(this);
-        }
+        } 
     }
 }
 
