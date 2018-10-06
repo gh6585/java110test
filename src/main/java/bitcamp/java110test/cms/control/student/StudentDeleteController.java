@@ -5,14 +5,14 @@ import java.util.Scanner;
 import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
-import bitcamp.java110test.cms.dao.StudentDao;
+import bitcamp.java110test.cms.dao.StudentDao1;
 
 @Component
 public class StudentDeleteController {
     
- StudentDao studentDao;
+ StudentDao1 studentDao;
     
-    public void setStudentDao(StudentDao studentDao) {
+    public void setStudentDao(StudentDao1 studentDao) {
         this.studentDao = studentDao;
     }
     

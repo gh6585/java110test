@@ -6,12 +6,12 @@ import bitcamp.java110test.cms.context.ApplicationContext;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
 import bitcamp.java110test.cms.dao.ManagerDao;
-import bitcamp.java110test.cms.dao.StudentDao;
+import bitcamp.java110test.cms.dao.StudentDao1;
 import bitcamp.java110test.cms.dao.TeacherDao;
 
 public class App {
 
-    public static StudentDao studentDao = new StudentDao();
+    public static StudentDao1 studentDao = new StudentDao1();
     public static TeacherDao teacherDao = new TeacherDao();
     public static ManagerDao managerDao = new ManagerDao();
     
