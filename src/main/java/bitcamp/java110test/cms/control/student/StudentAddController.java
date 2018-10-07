@@ -2,19 +2,18 @@ package bitcamp.java110test.cms.control.student;
 
 import java.util.Scanner;
 
-import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
-import bitcamp.java110test.cms.dao.StudentDao1;
+import bitcamp.java110test.cms.dao.StudentDao;
 import bitcamp.java110test.cms.domain.Student;
 
 
 @Component
 public class StudentAddController {
 
-    StudentDao1 studentDao;
+    StudentDao studentDao;
     
-    public void setStudentDao(StudentDao1 studentDao) {
+    public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
     
@@ -35,7 +34,7 @@ public class StudentAddController {
             System.out.println("최종학력?");
             s.setSchool(keyIn.nextLine());
 
-            if(App.studentDao.insert(s) > 0) {
+            if(studentDao.insert(s) > 0) {
                 System.out.println("저장하였습니다.");
             } else {
                 System.out.println("같은 이메일의 학생이 존재합니다.");

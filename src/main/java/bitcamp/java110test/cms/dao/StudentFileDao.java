@@ -6,8 +6,10 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.domain.Student;
 
+@Component
 public class StudentFileDao implements StudentDao{
     
     private List<Student> list = new ArrayList<>();

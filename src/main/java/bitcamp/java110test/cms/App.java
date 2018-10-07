@@ -5,22 +5,15 @@ import java.util.Scanner;
 import bitcamp.java110test.cms.context.ApplicationContext;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110test.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
-import bitcamp.java110test.cms.dao.ManagerDao;
-import bitcamp.java110test.cms.dao.StudentDao1;
-import bitcamp.java110test.cms.dao.TeacherDao;
 
 public class App {
 
-    public static StudentDao1 studentDao = new StudentDao1();
-    public static TeacherDao teacherDao = new TeacherDao();
-    public static ManagerDao managerDao = new ManagerDao();
-    
     static Scanner keyIn=new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
 
         ApplicationContext iocContainer =
-                new ApplicationContext("bitcamp.java110test.cms.control");
+                new ApplicationContext("bitcamp.java110test.cms");
         
         RequestMappingHandlerMapping requestHandlerMap=
                 new RequestMappingHandlerMapping();
@@ -37,7 +30,7 @@ public class App {
         
         while(true) {
             String menu = promtMenu();
-            if(menu.equals("0")) {
+            if(menu.equals("exit")) {
                 System.out.println("안녕히 가세요");
                 break;
             }

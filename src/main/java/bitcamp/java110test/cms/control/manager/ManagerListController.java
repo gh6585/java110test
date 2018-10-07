@@ -3,7 +3,6 @@ package bitcamp.java110test.cms.control.manager;
 import java.util.List;
 import java.util.Scanner;
 
-import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
@@ -22,7 +21,7 @@ public class ManagerListController {
     
     @RequestMapping("manager/list")
     public void list(Scanner keyIn) {
-        List<Manager> list = App.managerDao.findAll();
+        List<Manager> list = managerDao.findAll();
         for(Manager m : list) {
         
             System.out.printf("%s, %s, %s, %s, %s\n",

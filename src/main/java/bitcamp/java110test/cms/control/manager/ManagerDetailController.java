@@ -2,7 +2,6 @@ package bitcamp.java110test.cms.control.manager;
 
 import java.util.Scanner;
 
-import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class ManagerDetailController {
     public void detail(Scanner keyIn) {
         System.out.println("조회할 매니저의 이메일?");
         String email = keyIn.nextLine();
-        Manager m =App.managerDao.findByEmail(email);
+        Manager m =managerDao.findByEmail(email);
         
         if(m == null) {
             System.out.println("해당 이메일의 매니저가 없습니다.");

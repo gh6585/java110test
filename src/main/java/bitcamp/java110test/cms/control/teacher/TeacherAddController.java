@@ -2,7 +2,6 @@ package bitcamp.java110test.cms.control.teacher;
 
 import java.util.Scanner;
 
-import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
@@ -12,11 +11,11 @@ import bitcamp.java110test.cms.domain.Teacher;
 @Component
 public class TeacherAddController {
     
- TeacherDao teahcherDao;
+ TeacherDao teacherDao;
     
     @Autowired
     public void setTeacherDao(TeacherDao teacherDao) {
-        this.teahcherDao =teacherDao;
+        this.teacherDao =teacherDao;
     }
     
     @RequestMapping("teacher/add")
@@ -31,12 +30,12 @@ public class TeacherAddController {
             t.setPassword(keyIn.nextLine());
             System.out.println("전화?");
             t.setTel(keyIn.nextLine());
-            System.out.println("재직여부?(true/false)");
+            System.out.println("시급");
             t.setPay(Integer.parseInt(keyIn.nextLine()));
-            System.out.println("전화");
-            t.setTel(keyIn.nextLine());
+            System.out.println("과목");
+            t.setSubjects(keyIn.nextLine());
 
-            if(App.teacherDao.insert(t) > 0) {
+            if(teacherDao.insert(t) > 0) {
                 System.out.println("저장하였습니다");
             } else {
                 System.out.println("같은 이메일의 강사가 존재합니다.");

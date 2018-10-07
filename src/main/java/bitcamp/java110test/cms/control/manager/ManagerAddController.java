@@ -2,7 +2,6 @@ package bitcamp.java110test.cms.control.manager;
 
 import java.util.Scanner;
 
-import bitcamp.java110test.cms.App;
 import bitcamp.java110test.cms.annotation.Autowired;
 import bitcamp.java110test.cms.annotation.Component;
 import bitcamp.java110test.cms.annotation.RequestMapping;
@@ -34,7 +33,7 @@ public class ManagerAddController {
             System.out.println("직위");
             m.setPosition(keyIn.nextLine());
 
-            if (App.managerDao.inser(m) >0) {
+            if (managerDao.insert(m) >0) {
                 System.out.println("저장하였습니다.");
             } else {
                 System.out.println("같은 이메일의 매이저가 존재합니다.");
