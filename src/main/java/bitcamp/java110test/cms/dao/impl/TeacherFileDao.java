@@ -1,4 +1,4 @@
-package bitcamp.java110test.cms.dao;
+package bitcamp.java110test.cms.dao.impl;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,10 +8,10 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import bitcamp.java110test.cms.annotation.Component;
+import bitcamp.java110test.cms.dao.TeacherDao;
 import bitcamp.java110test.cms.domain.Teacher;
 
-@Component
+//@Component
 public class TeacherFileDao implements TeacherDao{
     private List<Teacher> list = new ArrayList<>();
 

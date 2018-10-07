@@ -1,8 +1,9 @@
-package bitcamp.java110test.cms.dao;
+package bitcamp.java110test.cms.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import bitcamp.java110test.cms.dao.StudentDao;
 import bitcamp.java110test.cms.domain.Student;
 
 public class StudentListDao implements StudentDao{

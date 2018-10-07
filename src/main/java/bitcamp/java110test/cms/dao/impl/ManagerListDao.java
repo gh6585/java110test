@@ -1,8 +1,9 @@
-package bitcamp.java110test.cms.dao;
+package bitcamp.java110test.cms.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import bitcamp.java110test.cms.dao.ManagerDao;
 import bitcamp.java110test.cms.domain.Manager;
 
 public class ManagerListDao implements ManagerDao{

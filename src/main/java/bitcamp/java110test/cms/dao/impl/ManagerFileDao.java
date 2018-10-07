@@ -1,4 +1,4 @@
-package bitcamp.java110test.cms.dao;
+package bitcamp.java110test.cms.dao.impl;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,10 +8,10 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import bitcamp.java110test.cms.annotation.Component;
+import bitcamp.java110test.cms.dao.ManagerDao;
 import bitcamp.java110test.cms.domain.Manager;
 
-@Component
+//@Component
 public class ManagerFileDao implements ManagerDao{
     private List<Manager> list = new ArrayList<>();
 
