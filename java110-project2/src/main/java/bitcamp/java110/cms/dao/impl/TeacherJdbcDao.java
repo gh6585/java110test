@@ -1,19 +1,27 @@
 package bitcamp.java110.cms.dao.impl;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import bitcamp.java110.cms.annotation.Autowired;
 import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.dao.DaoException;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.util.DataSource;
 
 @Component
 public class TeacherJdbcDao implements TeacherDao {
+    
+    DataSource dataSource;
+    
+    @Autowired
+    public void setDataSrouce(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
     
     public int insert(Teacher teacher) {
         Connection con = null;
@@ -21,10 +29,7 @@ public class TeacherJdbcDao implements TeacherDao {
         
         try {
             
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mariadb://localhost:3306/studydb", 
-                    "study", "1111");
+            con = dataSource.getConnection();
             
             con.setAutoCommit(false);
 
@@ -71,10 +76,8 @@ public class TeacherJdbcDao implements TeacherDao {
         ResultSet rs = null;
         
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mariadb://localhost:3306/studydb", 
-                    "study", "1111");
+
+            con = dataSource.getConnection();
             
             stmt = con.createStatement();
             
@@ -114,10 +117,8 @@ public class TeacherJdbcDao implements TeacherDao {
         ResultSet rs = null;
         
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mariadb://localhost:3306/studydb", 
-                    "study", "1111");
+
+            con = dataSource.getConnection();
             
             stmt = con.createStatement();
             rs = stmt.executeQuery(
@@ -160,10 +161,8 @@ public class TeacherJdbcDao implements TeacherDao {
         ResultSet rs = null;
         
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mariadb://localhost:3306/studydb", 
-                    "study", "1111");
+
+            con = dataSource.getConnection();
             
             stmt = con.createStatement();
             rs = stmt.executeQuery(
@@ -206,10 +205,8 @@ public class TeacherJdbcDao implements TeacherDao {
         Statement stmt = null;
         
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mariadb://localhost:3306/studydb", 
-                    "study", "1111");
+
+            con = dataSource.getConnection();
             
             con.setAutoCommit(false);
             stmt = con.createStatement();
