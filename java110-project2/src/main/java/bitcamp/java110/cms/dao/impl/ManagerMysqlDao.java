@@ -6,15 +6,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import bitcamp.java110.cms.annotation.Autowired;
-import bitcamp.java110.cms.annotation.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import bitcamp.java110.cms.dao.DaoException;
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.util.DataSource;
 
 @Component
-public class ManagerJdbcDao implements ManagerDao {
+public class ManagerMysqlDao implements ManagerDao {
     
     DataSource dataSource;
     
@@ -22,16 +23,15 @@ public class ManagerJdbcDao implements ManagerDao {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
-    
+
     public int insert(Manager manager) {
-        Connection con = null;
         Statement stmt = null;
         
+        Connection con = null;
+        
         try {
-            
             con = dataSource.getConnection();
-            
+
             con.setAutoCommit(false);
 
             stmt = con.createStatement();
@@ -57,16 +57,17 @@ public class ManagerJdbcDao implements ManagerDao {
             
             con.commit();
             return 1;
+            
         } catch (Exception e) {
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {
             try {stmt.close();} catch (Exception e) {}
-            try {con.close();} catch (Exception e) {}
         }
     }
     
- public List<Manager> findAll() {
+    public List<Manager> findAll() {
         
         ArrayList<Manager> list = new ArrayList<>();
         
@@ -99,10 +100,10 @@ public class ManagerJdbcDao implements ManagerDao {
             }
         } catch (Exception e) {
             throw new DaoException(e);
+            
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
-            try {con.close();} catch (Exception e) {}
         }
         return list;
     }
@@ -117,37 +118,36 @@ public class ManagerJdbcDao implements ManagerDao {
             
             stmt = con.createStatement();
             rs = stmt.executeQuery(
-                    "select" +
+                    "select" + 
                     " m.mno," +
-                    " m.name," +
-                    " m.email," +
-                    " m.tel," +
-                    " mr.posi" +
-                    " from p1_mgr mr" +
+                    " m.name," + 
+                    " m.email," + 
+                    " m.tel," + 
+                    " mr.posi" + 
+                    " from p1_mgr mr" + 
                     " inner join p1_memb m on mr.mrno = m.mno" +
                     " where m.email='" + email + "'");
-                    
-             if (rs.next()) {
-                 Manager mgr = new Manager();
-                 mgr.setNo(rs.getInt("mno"));
-                 mgr.setEmail(rs.getString("email"));
-                 mgr.setName(rs.getString("name"));
-                 mgr.setTel(rs.getString("tel"));
-                 mgr.setPosition(rs.getString("posi"));
-                 
-                 return mgr;
-             }
-             
+            
+            if (rs.next()) {
+                Manager mgr = new Manager();
+                mgr.setNo(rs.getInt("mno"));
+                mgr.setEmail(rs.getString("email"));
+                mgr.setName(rs.getString("name"));
+                mgr.setTel(rs.getString("tel"));
+                mgr.setPosition(rs.getString("posi"));
+                
+                return mgr;
+            }
             return null;
+            
         } catch (Exception e) {
             throw new DaoException(e);
+            
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
-            try {con.close();} catch (Exception e) {}
         }
     }
-    
     
     public Manager findByNo(int no) {
         Connection con = null;
@@ -187,7 +187,6 @@ public class ManagerJdbcDao implements ManagerDao {
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
-            try {con.close();} catch (Exception e) {}
         }
     }
     
@@ -201,7 +200,7 @@ public class ManagerJdbcDao implements ManagerDao {
             con.setAutoCommit(false);
             stmt = con.createStatement();
             
-            String sql = "delete from p1_mgr where mrno=" + no;
+            String sql = "delete from p1_mgr where mrno=" + no ;
             int count = stmt.executeUpdate(sql);
             
             if (count == 0)
@@ -212,15 +211,16 @@ public class ManagerJdbcDao implements ManagerDao {
             con.commit();
             
             return 1;
+            
         } catch (Exception e) {
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
-        } 
-        
-        finally {
+            
+        } finally {
             try {stmt.close();} catch (Exception e) {}
-            try {con.close();} catch (Exception e) {}
         }
     }
+    
 }
 
 

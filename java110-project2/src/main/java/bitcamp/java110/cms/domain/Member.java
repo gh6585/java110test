@@ -16,9 +16,6 @@ public class Member implements Serializable {
     public void setNo(int no) {
         this.no = no;
     }
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
     public String getName() {
         return name;
     }
