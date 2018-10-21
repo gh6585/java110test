@@ -5,7 +5,7 @@ import java.util.List;
 public class CD {
     private String title;
     private String publisher;
-    private List<String> song;
+    private List<String> songs;
    
     
     public String getTitle() {
@@ -20,15 +20,15 @@ public class CD {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-    public List<String> getSong() {
-        return song;
+    public List<String> getSongs() {
+        return songs;
     }
-    public void setSong(List<String> song) {
-        this.song = song;
+    public void setSongs(List<String> songs) {
+        this.songs = songs;
     }
     @Override
     public String toString() {
-        return "CD [title=" + title + ", publisher=" + publisher + ", song=" + song + "]";
+        return "CD [title=" + title + ", publisher=" + publisher + ", songs=" + songs + "]";
     }
     
     

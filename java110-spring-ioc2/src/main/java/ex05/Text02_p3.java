@@ -2,6 +2,8 @@
 //
 package ex05;
 
+import java.util.HashSet;
+
 public class Text02_p3 {
         
      static class Member{
@@ -46,8 +48,8 @@ public class Text02_p3 {
         
      public static void main(String[] args) {
          
-         Member s1 = new Member("홍길동", 20);
-         Member s2 = new Member("홍길동", 20);
+         String s1 = new String("홍길동");
+         String s2 = new String("홍길동");
          
          // 인스턴스 비교
          // 1) == 연산자는 레퍼런스에 저장된 인스턴스의 주소를 비교한다.
@@ -59,6 +61,63 @@ public class Text02_p3 {
          if (s1.equals(s2)) System.out.println("s1 == s2");
          else System.out.println("s1 != s2");
          
+         // Set은 같은 값을 중복해서 저장하지 않는다.
+         // => 즉 인스턴스가 같은지를 비교하는 것이 아니라 값이 같은지를 비교한다.
+         // => 또한 HashSet은 이름 그대로 인스턴스의 hash 값이 같으지를 비교한다.
+         //
+         // 주의!
+         // => Object에서 상속 받은 hashCode()는 각 인스턴스 마다
+         //    고유의 hash 값을 리턴한다.
+         //    즉 equls()의 리턴 값이 true라도 hash 값이 다르다는 것이다.
+         //
+         // 해결책
+         // => 인스턴스의 값이 같으면 같은 hash 값을 리턴하도록 오버라이딩 하라!
+         // => String 클래스는 equals()와 hashCode() 모두 오버라이딩 하였다.
+         //    String 클래스 외에 Wrapper 클래스도 마찬가지이다.
+         HashSet<String> set = new HashSet<>();
+         set.add(s1);
+         set.add(s2);
+         
+         System.out.println("----------");
+         for(String s: set) {
+             System.out.println(s);
+         }
+         System.out.println("-------------");
+         
+         Member obj1= new Member("홍길동", 20);
+         Member obj2= new Member("홍길동", 20);
+         
+         if(obj1 == obj2) System.out.println("obj1 == obj2");
+         else System.out.println("obj1 != obj2");
+         
+         if(obj1.equals(obj2)) System.out.println("obj == obj2");
+         else System.out.println("obj1 != obj2");
+         
+         HashSet<Member> set2 = new HashSet<>();
+         set2.add(obj1);
+         set2.add(obj2);
+         
+         System.out.println("-----------");
+         for (Member m : set2) {
+             System.out.println(m);
+         }
+         System.out.println("----------------");
+         
+         
      }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
