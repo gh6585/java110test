@@ -11,7 +11,7 @@
         @Override
         public void setAsText(String text) throws IllegalArgumentException {
             System.out.println("EnginePropertyEditor.setAsText");
-            
+          
            String[] values = text.split(",");
            Engine engine = new Engine();
            
@@ -21,4 +21,7 @@
            
            this.setValue(engine);
         }
+        
+        
+        
     }
