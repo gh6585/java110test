@@ -29,7 +29,7 @@ public class Text03 {
     public static void main(String[] args) {
         
         ApplicationContext iocContainer = 
-                new ClassPathXmlApplicationContext("ex08/app-context-3.xml");
+                new ClassPathXmlApplicationContext("ex08/app-context-5.xml");
         
         System.out.println("------------------------------");
         
