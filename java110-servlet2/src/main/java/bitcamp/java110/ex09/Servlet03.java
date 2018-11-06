@@ -9,7 +9,6 @@ package bitcamp.java110.ex09;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ex09/servlet02")
-public class Servlet02 extends HttpServlet{
+@WebServlet("/ex09/servlet03")
+public class Servlet03 extends HttpServlet{
     private static final long serialVersionUID = 1L;
     
       @Override
@@ -26,14 +25,6 @@ public class Servlet02 extends HttpServlet{
           HttpServletRequest req,
           HttpServletResponse res)
         throws ServletException, IOException {
-        
-        // ServletRequest 보관소에 저장된 값을 꺼낸다.
-        // => forward, include 서블릿끼리는
-        //    ServletRequest 보관소를 통해 값을 공유할 수 있다.
-        //
-        String op =req.getParameter("op");
-        int a = Integer.parseInt(req.getParameter("a"));
-        int b = Integer.parseInt(req.getParameter("b"));
         
         res.setContentType("text/html;charset=UTF-8");
         PrintWriter out = res.getWriter();
@@ -45,17 +36,8 @@ public class Servlet02 extends HttpServlet{
         out.println("<title>ex09</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>빼기 계산 결과</h1>");
-        
-        if(!op.equals("-")) {
-          // 연산자가 '빼기' 가 아니라면 Servet03에게 작업을 위임한다.
-          RequestDispatcher 요청배달자 =
-                  req.getRequestDispatcher("servlet03");
-          요청배달자.forward(req, res);
-          
-          return;
-        }
-        out.printf("<p>%d - %d = %d</p>\n", a, b, (a - b));
+        out.println("<h1>계산 오류!</h1>");
+        out.printf("<p>'%s' 연산자를 지원하지 않습니다.</p>\n");
         out.println("</body>");
         out.println("</html>");
         

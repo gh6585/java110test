@@ -22,7 +22,7 @@ public class Servlet01 extends HttpServlet{
     private static final long serialVersionUID = 1L;
     
       @Override
-      protected void doPost(
+      protected void doGet(
           HttpServletRequest req,
           HttpServletResponse res)
         throws ServletException, IOException {
